@@ -1,8 +1,18 @@
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'jobstage_db');
 if(isset($_POST['mail'])){
-    $query= 'INSERT INTO users VALUES ("'.$_POST['login'].'", "'.$_POST['password'].'", "'.$_POST['surname'].'", "'.$_POST['name'].'", "'.$_POST['mail'].'", "'.$_POST['country'].'", "'.$_POST['city'].'")' ;
-    $resultregister = mysqli_query($link, $query );
+    $query = 'SELECT login FROM Users WHERE login="' . $_POST['login'] . '"';
+    $resultregister = mysqli_query($link, $query);
+    if( mysqli_num_rows( $resultregister) ){
+        mysqli_free_result($resultregister);
+        header("refresh:5;url=index.html");
+        echo 'Login existant (redirection automatique dans 5 sec.)';
+        exit;
+    }
+    else {
+        $query = 'INSERT INTO users VALUES ("' . $_POST['login'] . '", "' . $_POST['password'] . '", "' . $_POST['surname'] . '", "' . $_POST['name'] . '", "' . $_POST['mail'] . '", "' . $_POST['country'] . '", "' . $_POST['city'] . '")';
+        $resultregister = mysqli_query($link, $query);
+    }
 }
 
 if(isset($_POST['postID'])){
