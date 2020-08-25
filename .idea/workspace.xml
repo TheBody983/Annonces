@@ -20,14 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3be2b944-e00b-47a7-b900-c7fec6801eaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/view/annonces.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/layout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/annonces.php" beforeDir="false" afterPath="$PROJECT_DIR$/annonces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/annonces.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/annonces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/post.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,7 @@
       <workItem from="1597278325105" duration="1133000" />
       <workItem from="1597279470942" duration="910000" />
       <workItem from="1598237338262" duration="648000" />
-      <workItem from="1598322039562" duration="2119000" />
+      <workItem from="1598322039562" duration="3306000" />
     </task>
     <servers />
   </component>
@@ -104,10 +104,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="647" y="310" width="429" height="203" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1597278913600" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1598322223011">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1598324747904">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1598322223011" />
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1598324747904" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1597278310519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
