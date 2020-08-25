@@ -1,55 +1,5 @@
 <?php
-function pays($name)
-{
-    $url = 'https://data.gouv.nc/api/records/1.0/search/';
-    $request_url = $url . '?dataset=liste-des-pays-et-territoires-etrangers&q=' . urlencode($name) . '&rows=1000';
-
-// initialisation d'une session
-    $curl = curl_init($request_url);
-
-// spécification des paramètres de connexion
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-
-// envoie de la requête et récupération du résultat sous forme d'objet JSON
-    $response = json_decode(curl_exec($curl));
-
-// fermeture de la session
-    curl_close($curl);
-
-// stockage des villes et des codes postaux dans un tableau associatif
-    foreach ($response->records as $infopays) {
-        $pays[$infopays->fields->libcog] = $infopays->fields->libenr;
-    }
-    return $pays;
-}
-
-function cityNC($name)
-{
-$url = 'https://data.gouv.nc/api/records/1.0/search/';
-$request_url = $url .'?dataset=communes-nc&q='. urlencode($name).'&rows=100';
-
-// initialisation d'une session
-$curl = curl_init($request_url);
-
-// spécification des paramètres de connexion
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-
-// envoie de la requête et récupération du résultat sous forme d'objet JSON
-$response = json_decode(curl_exec($curl));
-
-// fermeture de la session
-curl_close($curl);
-
-// stockage des villes et des codes postaux dans un tableau associatif
-foreach( $response->records as $infoville ){
-$villes[$infoville->fields->nom_minus]=$infoville->fields->code_post;
-}
-return $villes;
-}
+include "dataAPI.php"
 ?>
 
 <html lang="fr">
@@ -68,7 +18,7 @@ return $villes;
     <label for="mail"> Mail </label> :
     <input type="text" name="mail" id="mail"/>
     <br />
-    <label for="country">Pays</label>
+    <label for="country">Pays d'origine</label>
     <select name="country" id="country">
     <?php
     $pays = pays('');
@@ -80,7 +30,7 @@ return $villes;
 
     <br />
 
-    <label for="citySelect">Ville</label>
+    <label for="citySelect">Ville de Résidence</label>
     <select name="city" id="citySelect">
     <?php
     $villesNC = cityNC('');
