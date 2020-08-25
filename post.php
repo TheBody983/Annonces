@@ -1,20 +1,8 @@
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'jobstage_db');
-$resultPost = mysqli_query($link, "SELECT postTitle, postContent FROM posts WHERE postID = '".$_GET['postID']."'" );
+$result = mysqli_query($link, 'SELECT * FROM posts WHERE postId='.$_GET['id'] );
+$post = mysqli_fetch_assoc($result);
 mysqli_close($link);
-
-$post =  mysqli_fetch_assoc($resultPost)
+// inclut le code de la présentation HTML
+require 'view/post.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title><?php echo $post['postTitle']; ?></title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-</head>
-
-<body>
-<h1><?php echo $post['postTitle']; ?></h1>
-<p> <?php echo $post['postContent'];?> </p>
-</body>
-</html>

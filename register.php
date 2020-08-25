@@ -99,6 +99,6 @@ return $villes;
     <br />
     <input type="submit" value="Envoyer"/>
 </form>
-<a href="index.html"> Annuler </a>
+<a href="index.php"> Annuler </a>
 </body>
 </html>
