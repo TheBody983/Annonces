@@ -9,7 +9,7 @@ automatique dans 5 sec.)';
 <?php $title= 'Exemple Annonces Basic PHP: Annonces'; ?>
 <?php ob_start(); ?>
     <p> Hello <?php echo $login; ?> </p>
-    <h1>List of Posts</h1>
+    <h2>List of Posts</h2>
     <ul>
         <?php foreach( $posts as $post ) : ?>
             <li>
@@ -19,5 +19,6 @@ automatique dans 5 sec.)';
             </li>
         <?php endforeach ?>
     </ul>
+<a href="new.php"> Nouvelle Annonce </a>
 <?php $content = ob_get_clean(); ?>
 <?php include 'layout.php'; ?>
