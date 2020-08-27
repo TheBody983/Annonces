@@ -18,7 +18,14 @@ if( mysqli_num_rows( $result) )
 $isuser = True;
 mysqli_free_result( $result );
 close_database_connection($link);
-return $isuser;
+    return $isuser;
+}
+
+function new_user($login,$pwd,$surname,$name,$mail,$country,$city){
+    $link = open_database_connection();
+    $query= 'INSERT INTO users VALUES ("'.$login.'", "'.$pwd.'", "'.$surname.'", "'.$name.'", "'.$mail.'", "'.$country.'", "'.$city.'")' ;
+    mysqli_query($link, $query );
+    close_database_connection($link);
 }
 
 function get_all_posts()
@@ -27,12 +34,13 @@ $link = open_database_connection();
 $resultall = mysqli_query($link,'SELECT postId, postTitle FROM posts');
 $posts = array();
 while ($row = mysqli_fetch_assoc($resultall)) {
-$posts[] = $row;
-}
+    $posts[] = $row;
+    }
 mysqli_free_result( $resultall);
 close_database_connection($link);
 return $posts;
 }
+
 function get_post( $id )
 {
 $link = open_database_connection();

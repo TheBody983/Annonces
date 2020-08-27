@@ -17,4 +17,9 @@ function post_action($id)
     $post = get_post($id);
     require 'view/post.php';
 }
+
+function register_action()
+{
+    require 'view/register.php';
+}
 ?>
