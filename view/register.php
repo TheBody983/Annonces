@@ -1,14 +1,9 @@
 <?php
 include "dataAPI.php"
 ?>
-
-<html lang="fr">
-<head>
-    <title>Créer un compte</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-</head>
-<body>
-<form method="post" action="index.php/annonces">
+<?php $title= 'Register'; ?>
+<?php ob_start(); ?>
+<form method="post" action="annonces">
     <label for="name"> Nom </label> :
     <input type="text" name="name" id="name"/>
     <br />
@@ -50,5 +45,5 @@ include "dataAPI.php"
     <input type="submit" value="Envoyer"/>
 </form>
 <a href="index.php"> Annuler </a>
-</body>
-</html>
+<?php $content = ob_get_clean(); ?>
+<?php include 'layout.php'; ?>

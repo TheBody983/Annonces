@@ -1,6 +1,6 @@
 <?php $title= 'Connexion'; ?>
 <?php ob_start(); ?>
-    <form method="post" action="index.php/annonces">
+    <form method="post" action="annonces">
         <label for="login"> Identifiant </label> :
         <input type="text" name="login" id="login" placeholder="defaut" maxlength="12" required />
         <br />

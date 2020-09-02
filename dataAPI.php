@@ -23,6 +23,7 @@ function pays($name)
     foreach ($response->records as $infopays) {
         $liste[$infopays->fields->libcog] = $infopays->fields->libenr;
     }
+    natsort($liste);
     return $liste;
 }
 
@@ -49,6 +50,7 @@ function cityNC($name)
     foreach( $response->records as $infoville ){
         $villes[$infoville->fields->nom_minus]=$infoville->fields->code_post;
     }
+    natsort($villes);
     return $villes;
 }
 

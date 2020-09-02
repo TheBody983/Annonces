@@ -8,6 +8,7 @@ function close_database_connection($link)
 {
 mysqli_close($link);
 }
+
 function is_user( $login, $password )
 {
 $isuser = False ;
@@ -15,15 +16,28 @@ $link = open_database_connection();
 $query= 'SELECT login FROM Users WHERE login="'.$login.'" and password="'.$password.'"';
 $result = mysqli_query($link, $query );
 if( mysqli_num_rows( $result) )
-$isuser = True;
+    $isuser = True;
 mysqli_free_result( $result );
 close_database_connection($link);
-    return $isuser;
+return $isuser;
 }
 
 function new_user($login,$pwd,$surname,$name,$mail,$country,$city){
     $link = open_database_connection();
     $query= 'INSERT INTO users VALUES ("'.$login.'", "'.$pwd.'", "'.$surname.'", "'.$name.'", "'.$mail.'", "'.$country.'", "'.$city.'")' ;
+    mysqli_query($link, $query );
+    close_database_connection($link);
+}
+
+function new_post($title, $content){
+    $link = open_database_connection();
+
+    $query= 'SELECT MAX(postID) AS ID FROM posts' ;
+    $res = mysqli_query($link, $query );
+    $id = mysqli_fetch_assoc($res)['ID']+1;
+
+
+    $query= 'INSERT INTO posts VALUES ("'.$id.'", "'.$title.'", "'.$content.'")' ;
     mysqli_query($link, $query );
     close_database_connection($link);
 }
@@ -51,4 +65,6 @@ mysqli_free_result( $result);
 close_database_connection($link);
 return $post;
 }
+
 ?>
+
