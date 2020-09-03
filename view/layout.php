@@ -21,10 +21,10 @@
 
     switch( $error ) {
             case 'not connected':
-                echo '<p>Veuillez svp vous authentifier</p>';
+                echo "<p>Vous n'êtes pas connecté.</p>";
                 break;
             case 'bad login/pwd':
-                echo '<p>Erreur de login et/ou de mot de passe</p>';
+                echo "<p>Erreur d'authentification. Veuillez vous connecter ou vous créer un compte.</p>";
                 break;
             case 'noresult':
                 echo '<p>Aucun Résultat</p>';

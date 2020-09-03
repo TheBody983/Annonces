@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3be2b944-e00b-47a7-b900-c7fec6801eaf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/view/favoris.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/offre.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/annonces.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/annonces.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/post.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +81,7 @@
       <workItem from="1599077443386" duration="1962000" />
       <workItem from="1599087588173" duration="7598000" />
       <workItem from="1599105506840" duration="11363000" />
-      <workItem from="1599122781765" duration="5595000" />
+      <workItem from="1599122781765" duration="7077000" />
     </task>
     <servers />
   </component>
