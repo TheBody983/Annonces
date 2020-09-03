@@ -19,7 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3be2b944-e00b-47a7-b900-c7fec6801eaf" name="Default Changelist" comment="" />
+    <list default="true" id="3be2b944-e00b-47a7-b900-c7fec6801eaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/view/admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/favoris.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/offre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataAPI.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/annonces.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/annonces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/new.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/new.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/register.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +89,8 @@
       <workItem from="1598916689393" duration="20484000" />
       <workItem from="1598942124732" duration="285000" />
       <workItem from="1599077443386" duration="1962000" />
+      <workItem from="1599087588173" duration="7598000" />
+      <workItem from="1599105506840" duration="10527000" />
     </task>
     <servers />
   </component>
@@ -104,6 +119,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="526" y="236" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1597278693117" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599107279367">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599107279367" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598942384035">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -112,10 +131,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="647" y="310" width="429" height="203" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1597278913600" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1598486756354">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1599115304810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1598486756354" />
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1599115304810" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1598916755004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

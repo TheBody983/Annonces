@@ -18,8 +18,13 @@
         }
 
     if( isset($login) && $login != ' ') {
-        echo 'Connecté en tant que '.$login ;
-        echo '<a href="/Annonces/index.php/logout">Déconnexion</a>';
+        echo "<h1><a href='http://localhost/Annonces/index.php'>Site d'Annonces</a></h1>";
+        echo 'Connecté en tant que '.$login.' ' ;
+        echo '<a href="/Annonces/index.php/favoris">Favoris</a> ';
+        echo '<a href="/Annonces/index.php/logout">Déconnexion</a> ';
+    }
+    if($login == "aphaz"){
+        echo '<a href="/Annonces/index.php/admin">Administration</a>';
     }
     ?>
 </p>

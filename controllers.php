@@ -21,12 +21,50 @@ function post_action($id, $login, $error)
     require 'view/post.php';
 }
 
+function offre_action($id, $login, $error)
+{
+    require_once 'dataAPI.php';
+
+    if(isset($_GET["fav"])){
+        signaler($id,$login);
+    }
+    if(isset($_GET["unfav"])){
+        signaler_inv($id,$login);
+    }
+
+    $offre = get_offre($id);
+    require 'view/offre.php';
+}
+
 function new_action($login, $error)
 {
     require 'view/new.php';
 }
 
-function refresh(){
-            header("refresh:0");
+function favoris_action($login, $error)
+{
+    $offres = get_favorites($login);
+    require 'view/favoris.php';
 }
+
+function admin_action($login, $error)
+{
+    $posts = get_all_posts();
+    $users = get_all_users();
+    require 'view/admin.php';
+}
+
+function homepage(){
+    header("refresh:0;url=http://localhost/Annonces/index.php/annonces");
+}
+
+function logout(){
+
+    session_destroy();
+    header("refresh:0;url=http://localhost/Annonces/index.php");
+
+}
+
+
+
 ?>

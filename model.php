@@ -1,12 +1,29 @@
 <?php
+//DATABASE CONNECTION
 function open_database_connection()
 {
-    $link = mysqli_connect('localhost', 'root', '', 'jobstage_db');
-return $link;
+    $link = mysqli_connect('localhost', 'root', '', 'annonces');
+    return $link;
 }
+
 function close_database_connection($link)
 {
-mysqli_close($link);
+    mysqli_close($link);
+}
+
+//USERS
+
+function get_all_users()
+{
+    $link = open_database_connection();
+    $resultall = mysqli_query($link,'SELECT login FROM users');
+    $posts = array();
+    while ($row = mysqli_fetch_assoc($resultall)) {
+        $users[] = $row;
+    }
+    mysqli_free_result( $resultall);
+    close_database_connection($link);
+    return $users;
 }
 
 function is_user( $login, $password )
@@ -29,6 +46,28 @@ function new_user($login,$pwd,$surname,$name,$mail,$country,$city){
     close_database_connection($link);
 }
 
+function delete_user($login){
+    $link = open_database_connection();
+    $query= 'DELETE FROM users WHERE login = "'.$login.'"';
+    mysqli_query($link, $query );
+    close_database_connection($link);
+}
+
+
+//POSTS
+function get_all_posts()
+{
+    $link = open_database_connection();
+    $resultall = mysqli_query($link,'SELECT postId, postTitle FROM posts');
+    $posts = array();
+    while ($row = mysqli_fetch_assoc($resultall)) {
+        $posts[] = $row;
+    }
+    mysqli_free_result( $resultall);
+    close_database_connection($link);
+    return $posts;
+}
+
 function new_post($title, $content){
     $link = open_database_connection();
 
@@ -42,19 +81,6 @@ function new_post($title, $content){
     close_database_connection($link);
 }
 
-function get_all_posts()
-{
-$link = open_database_connection();
-$resultall = mysqli_query($link,'SELECT postId, postTitle FROM posts');
-$posts = array();
-while ($row = mysqli_fetch_assoc($resultall)) {
-    $posts[] = $row;
-    }
-mysqli_free_result( $resultall);
-close_database_connection($link);
-return $posts;
-}
-
 function get_post( $id )
 {
 $link = open_database_connection();
@@ -65,6 +91,67 @@ mysqli_free_result( $result);
 close_database_connection($link);
 return $post;
 }
+
+function delete_post($id){
+    $link = open_database_connection();
+    $query= 'DELETE FROM posts WHERE postID = '.$id;
+    mysqli_query($link, $query );
+    close_database_connection($link);
+}
+
+//SIGNALEMENTS
+function est_signalee($postID,$login){
+    $link = open_database_connection();
+
+    $isSignaled = false;
+
+    $query= 'SELECT * FROM signalements WHERE postID="'.$postID.'" AND login ="'.$login.'"' ;
+    $result = mysqli_query($link, $query );
+
+    if(mysqli_num_rows($result)){
+        $isSignaled = true;
+    }
+    close_database_connection($link);
+    return $isSignaled;
+}
+
+function signaler($postID,$login){
+    if(!est_signalee($postID,$login)) {
+        $link = open_database_connection();
+
+        $query = 'INSERT INTO signalements VALUES ("' . $postID . '", "' . $login . '")';
+        mysqli_query($link, $query);
+        close_database_connection($link);
+    }
+}
+
+function signaler_inv($postID,$login){
+    if(est_signalee($postID,$login)) {
+        $link = open_database_connection();
+
+        $query = 'DELETE FROM signalements WHERE postID="' . $postID . '" AND login ="' . $login . '"';
+        mysqli_query($link, $query);
+        close_database_connection($link);
+    }
+}
+
+function get_favorites($login){
+    $link = open_database_connection();
+
+    $isSignaled = false;
+
+    $query= 'SELECT * FROM signalements WHERE login ="'.$login.'"' ;
+    $resultall = mysqli_query($link, $query );
+    $offres = array();
+    while ($row = mysqli_fetch_assoc($resultall)) {
+        $offres[] = $row;
+    }
+    mysqli_free_result( $resultall);
+    close_database_connection($link);
+    return $offres;
+}
+
+
 
 ?>
 

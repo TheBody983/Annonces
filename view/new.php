@@ -1,6 +1,6 @@
 <?php $title= 'Nouvelle Annonce'; ?>
 <?php ob_start(); ?>
-<form method="post" action="newpost">
+<form method="post" action="annonces">
     <label for="postTitle"> Titre du post </label> :
     <input type="text" name="postTitle" id="postTitle"/>
     <br/>

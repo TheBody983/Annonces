@@ -44,6 +44,6 @@ include "dataAPI.php"
     <br />
     <input type="submit" value="Envoyer"/>
 </form>
-<a href="index.php"> Annuler </a>
+<a href="http://localhost/Annonces/index.php"> Annuler </a>
 <?php $content = ob_get_clean(); ?>
 <?php include 'layout.php'; ?>
