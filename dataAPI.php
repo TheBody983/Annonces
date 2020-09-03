@@ -72,11 +72,12 @@ function offres($name)
 
     // fermeture de la session
     curl_close($curl);
-
+    if($response)
     // stockage des villes et des codes postaux dans un tableau associatif
     foreach( $response->records as $infoOffre ){
         $offreListe[$infoOffre->fields->coderome]=$infoOffre->fields->titreoffre;
     }
+    else $offreListe = NULL;
     return $offreListe;
 }
 

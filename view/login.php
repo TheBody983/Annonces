@@ -8,6 +8,6 @@
         <input type="password" name="password" id="password" maxlength="12" required />
         <input type="submit" value="Envoyer">
     </form>
-    <p>Pas de compte ? <a href="index.php/register">Creer un compte</a></p>
+    <p>Pas de compte ? <a href="register">Creer un compte</a></p>
 <?php $content = ob_get_clean(); ?>
 <?php include 'layout.php'; ?>

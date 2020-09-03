@@ -12,7 +12,6 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 //Enregistrement avant la vérification d'authentification
 if('/Annonces/index.php/register' == $uri){
-    logout();
     $login = ' ';
     $error = ' ';
     register_action($login, $error);
@@ -21,7 +20,12 @@ if('/Annonces/index.php/register' == $uri){
 
 //Création d'un nouvel utilisateur si vient de register
 if(isset($_POST['mail'])){
-    new_user($_POST['login'],$_POST['password'],$_POST['surname'],$_POST['name'],$_POST['mail'],$_POST['country'],$_POST['city']);
+    if(isset($_POST['city'])) {
+        new_user($_POST['login'], $_POST['password'], $_POST['surname'], $_POST['name'], $_POST['mail'], $_POST['country'], $_POST['city']);
+    }
+    else{
+        new_user($_POST['login'], $_POST['password'], $_POST['surname'], $_POST['name'], $_POST['mail'], ' ', ' ');
+    }
 }
 
 // vérification utilisateur authentifié
@@ -62,7 +66,7 @@ if ($uri == 'login'){
 }
 
 //Rediriger vers annonces si index.php et Session
-elseif($uri == '/Annonces/index.php'){
+elseif($uri == '/Annonces/index.php'|| $uri == '/Annonces/index.php/index.php'){
     homepage();
 }
 
@@ -70,7 +74,7 @@ elseif($uri == '/Annonces/index.php'){
 else if ( $uri == "annonces"|| '/Annonces/index.php/annonces' == $uri  || '/Annonces/index.php/newpost' == $uri ){
     //Creation d'une nouvelle annonce si en provenance de new
     if(isset($_POST['postTitle']) ){
-        new_post($_POST['postTitle'],$_POST['postContent']);
+        new_post($_POST['postTitle'],$_POST['postContent'], $login);
     }
     annonces_action($login,$error);
 }

@@ -18,6 +18,14 @@ function annonces_action( $login, $error)
 function post_action($id, $login, $error)
 {
     $post = get_post($id);
+
+    if(isset($_GET["fav"])){
+        signaler_posts($id,$login);
+    }
+    if(isset($_GET["unfav"])){
+        signaler_inv_posts($id,$login);
+    }
+
     require 'view/post.php';
 }
 
@@ -44,6 +52,7 @@ function new_action($login, $error)
 function favoris_action($login, $error)
 {
     $offres = get_favorites($login);
+    $posts = get_favorites_post($login);
     require 'view/favoris.php';
 }
 
@@ -61,7 +70,7 @@ function homepage(){
 function logout(){
 
     session_destroy();
-    header("refresh:0;url=http://localhost/Annonces/index.php");
+    header("refresh:0;url=http://localhost/Annonces/index.php/login");
 
 }
 

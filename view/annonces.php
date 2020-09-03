@@ -5,12 +5,12 @@ include "dataAPI.php";
 <?php $title= 'Annonces'; ?>
 
 <?php ob_start(); ?>
-    <h2>List of Posts</h2>
+    <h2>Liste des Posts</h2>
     <ul>
         <?php foreach( $posts as $post ) : ?>
             <li>
                 <a href="post?id=<?php echo $post['postId']; ?>">
-                    <?php echo $post['postTitle']; ?>
+                    <?php echo $post['postTitle']." - ".$post['login']; ?>
                 </a>
             </li>
         <?php endforeach ?>
@@ -26,11 +26,16 @@ include "dataAPI.php";
 <?php
     if(isset($_GET['name'])) {
         $offresListe = offres($_GET['name']);
-        echo "<ul>";
-        foreach ($offresListe as $nom => $cp):
-            echo '<li><a href="offre?id='.$nom.'">' . $nom . ' - ' . $cp . '</a></li>';
-        endforeach;
-        echo "</ul>";
+        if($offresListe) {
+            echo "<ul>";
+            foreach ($offresListe as $nom => $cp):
+                echo '<li><a href="offre?id=' . $nom . '">' . $nom . ' - ' . $cp . '</a></li>';
+            endforeach;
+            echo '</ul>';
+        }
+        else {
+            echo '<p>Aucun(s) Résultat(s)';;
+        }
     }
 ?>
 
