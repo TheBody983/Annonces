@@ -189,9 +189,7 @@ function signaler_inv($postID,$login){
 function get_favorites($login){
     $link = open_database_connection();
 
-    $isSignaled = false;
-
-    $query= 'SELECT * FROM signalements WHERE login ="'.$login.'"' ;
+    $query= 'SELECT postID FROM signalements WHERE login ="'.$login.'"' ;
     $resultall = mysqli_query($link, $query );
     $offres = array();
     while ($row = mysqli_fetch_assoc($resultall)) {

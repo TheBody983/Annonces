@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3be2b944-e00b-47a7-b900-c7fec6801eaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/favoris.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/favoris.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +84,11 @@
       <workItem from="1599087588173" duration="7598000" />
       <workItem from="1599105506840" duration="11363000" />
       <workItem from="1599122781765" duration="7077000" />
+      <workItem from="1599191448643" duration="1528000" />
+      <workItem from="1599197162292" duration="663000" />
+      <workItem from="1599425028233" duration="310000" />
+      <workItem from="1599440050546" duration="224000" />
+      <workItem from="1599452409460" duration="4218000" />
     </task>
     <servers />
   </component>
@@ -110,14 +117,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="526" y="236" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1597278693117" />
+    <state x="570" y="202" key="#Web_Browsers" timestamp="1599192191526">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="570" y="202" key="#Web_Browsers/0.0.1536.824@0.0.1536.824" timestamp="1599192191526" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599107279367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599107279367" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598942384035">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1599192189970">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598942384035" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1599192189970" />
     <state x="647" y="310" width="429" height="203" key="Github.ShareDialog" timestamp="1597278913600">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

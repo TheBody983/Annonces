@@ -6,12 +6,14 @@ require_once 'controllers.php';
 //Démarrage de la session
 session_start();
 
-//Chemin de la page
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+//RECUPERE L'URL ET LE COUPE EN MORCEAUX AU NIVEAU DE '/'
+$uri = explode('/',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+//PREND LE DERNIER MORCEAU DE $URI SOIT LE PARAMETRE
+$uri = end($uri);
 //echo $uri;
 
 //Enregistrement avant la vérification d'authentification
-if('/Annonces/index.php/register' == $uri){
+if('register' == $uri){
     $login = ' ';
     $error = ' ';
     register_action($login, $error);
@@ -66,12 +68,12 @@ if ($uri == 'login'){
 }
 
 //Rediriger vers annonces si index.php et Session
-elseif($uri == '/Annonces/index.php'|| $uri == '/Annonces/index.php/index.php'){
+elseif($uri == 'index.php'){
     homepage();
 }
 
 //Afficher les annonces
-else if ( $uri == "annonces"|| '/Annonces/index.php/annonces' == $uri  || '/Annonces/index.php/newpost' == $uri ){
+else if ( $uri == 'annonces'  || 'newpost' == $uri ){
     //Creation d'une nouvelle annonce si en provenance de new
     if(isset($_POST['postTitle']) ){
         new_post($_POST['postTitle'],$_POST['postContent'], $login);
@@ -80,33 +82,33 @@ else if ( $uri == "annonces"|| '/Annonces/index.php/annonces' == $uri  || '/Anno
 }
 
 //Consulter un post dont l'id est placé en get
-elseif ('/Annonces/index.php/post' == $uri && isset($_GET['id'])) {
+elseif ('post' == $uri && isset($_GET['id'])) {
     post_action($_GET['id'],$login,$error);
 }
 
 //Consulter une offre dont l'id est placé en get
-elseif ('/Annonces/index.php/offre' == $uri && isset($_GET['id'])) {
+elseif ('offre' == $uri && isset($_GET['id'])) {
     offre_action($_GET['id'],$login,$error);
 }
 
 //Se déconnecter
-elseif('/Annonces/index.php/logout' == $uri ) {
+elseif('logout' == $uri ) {
     // fermeture de la session
     logout();
 }
 
 //Créer une nouvelle annonce
-elseif ('/Annonces/index.php/new' == $uri){
+elseif ('new' == $uri){
     new_action($login, $error);
 }
 
 //Accèder aux offres signalées
-elseif ('/Annonces/index.php/favoris' == $uri){
+elseif ('favoris' == $uri){
     favoris_action($login, $error);
 }
 
 //Administration des posts et utilisateurs
-elseif ('/Annonces/index.php/admin' == $uri && $login == "aphaz"){
+elseif ('admin' == $uri && $login == "aphaz"){
     if(isset($_GET['deleteUser'])){
         delete_user($_GET['deleteUser']);
     }

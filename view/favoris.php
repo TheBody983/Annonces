@@ -19,10 +19,11 @@ if(isset($posts)){?>
         <?php endforeach ?>
     </ul>
     <?php
-}
-if(!$offres){
-?>
+}?>
     <h2>Liste des Annonces</h2>
+<?php
+if($offres){
+?>
     <ul>
         <?php foreach( $offres as $offre ) :
             $offre = get_offre($offre['postID']);?>
@@ -33,7 +34,12 @@ if(!$offres){
             </li>
         <?php endforeach ?>
     </ul>
-<?php } else $error = "noresult";?>
-
+<?php }
+else
+    {
+    $error = "offres.noresult";
+    echo "<p> Aucun Résultat</p>";
+    }
+?>
 <?php $content = ob_get_clean(); ?>
 <?php include 'layout.php'; ?>
