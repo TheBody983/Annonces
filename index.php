@@ -43,7 +43,8 @@ if(!isset($_SESSION['login']) ) {
         $action = 'login';
     }
     else {
-        $_SESSION['login'] = $_POST['login'] ;
+        $_SESSION['userID'] = getUserID($_POST['login']);
+        $_SESSION['login'] = getUserLogin($_SESSION['userID']);
         $login = $_SESSION['login'];
     }
 }
@@ -51,8 +52,14 @@ else{
     $login = $_SESSION['login'] ;
 }
 
+
 //Pour éviter les erreurs de $login not set en param
 if(!isset($login)){
+    //Corriger l'adresse pour éviter les bugs de type "/Annonce/annonces"
+    if(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/Annonces/index.php')
+    {
+        header("refresh:0;url=http://localhost/Annonces/index.php/login");
+    }
     $login = ' ';
 }
 if(!isset($error)){
@@ -60,12 +67,13 @@ if(!isset($error)){
 }
 
 switch ( $action ) {
-    case 'index.php':               //Rediriger vers annonces si index.php et Session
-        homepage();
-        break;
 
     case 'login' :                  //Connecter si pas de session
         login_action($login, $error);
+        break;
+
+    case 'index.php':               //Rediriger vers annonces si index.php et Session
+        homepage();
         break;
 
     case 'annonces' :               //Afficher les annonces
@@ -101,6 +109,7 @@ switch ( $action ) {
     case 'favoris' :               //Accèder aux offres signalées
         favoris_action($login, $error);
         break;
+
     case 'admin':                   //Administration des posts et utilisateurs
         if (isset($_GET['deleteUser'])) {
             delete_user($_GET['deleteUser']);

@@ -19,7 +19,7 @@
         echo '<button><a href="/Annonces/index.php/favoris">Favoris</a></button> ';
         echo '<button><a href="/Annonces/index.php/logout">Déconnexion</a></button> ';
     }
-    if($login == "aphaz"){
+    if(isset($_SESSION['userID'])) if($_SESSION['userID'] == 1){
         echo '<button><a href="/Annonces/index.php/admin">Administration</a></button>';
     }
     echo '</div></div>' ;
@@ -34,7 +34,28 @@
         }
     ?>
 </header>
+<button class="openbtn" onclick="openNav()">&#9776; See Users</button>
+
 <?php echo $content; ?>
 
+<div id="users" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <?php foreach( get_all_users() as $user ) : ?>
+        <li><?php echo getUserLogin($user['userID']); ?></li>
+    <?php endforeach ?>
+</div>
+
+
 </body>
+<script>
+    /* Set the width of the sidebar to 250px (show it) */
+    function openNav() {
+        document.getElementById("users").style.width = "250px";
+    }
+
+    /* Set the width of the sidebar to 0 (hide it) */
+    function closeNav() {
+        document.getElementById("users").style.width = "0";
+    }
+</script>
 </html>

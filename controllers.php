@@ -11,7 +11,12 @@ function register_action($login, $error)
 
 function annonces_action( $login, $error)
 {
-    $posts = get_all_posts();
+    if(isset($_GET["page"])) {
+        $page = $_GET["page"];
+    }
+    else $page = 1;
+    $select = (intval($page)-1)*5;
+    $posts = array_slice(get_all_posts(), $select, 5);
     require 'view/annonces.php';
 }
 

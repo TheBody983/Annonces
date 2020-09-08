@@ -21,7 +21,7 @@
     <?php foreach( $users as $user ) : ?>
     <li>
         <?php echo $user["login"]?>
-            <button><a href="admin?deleteUser=<?php echo $user['login']; ?>">
+            <button><a href="admin?deleteUser=<?php echo $user['userID']; ?>">
                 <?php echo 'Supprimer'; ?>
                 </a></button>
         </li>
