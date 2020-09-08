@@ -1,11 +1,12 @@
 <?php $title= 'Connexion'; ?>
 <?php ob_start(); ?>
-    <form method="post" action="annonces">
-        <label for="login"> Identifiant </label> :
-        <input type="text" name="login" id="login" placeholder="defaut" maxlength="12" required />
+    <form method="post" action="annonces" class="containerColumn">
+        <p><label for="login"> Identifiant </label> :</p>
+        <input type="text" name="login" id="login" maxlength="12" required class="loginInput"/>
         <br />
-        <label for="password"> Mot de Passe </label> :
-        <input type="password" name="password" id="password" maxlength="12" required />
+        <p><label for="password"> Mot de Passe </label> :</p>
+        <input type="password" name="password" id="password" maxlength="12" required class="loginInput"/>
+        <br/>
         <input type="submit" value="Envoyer">
     </form>
     <p>Pas de compte ? <a href="register">Creer un compte</a></p>

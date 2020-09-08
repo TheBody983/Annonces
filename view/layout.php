@@ -4,35 +4,36 @@
 <head>
 <title><?php echo $title;?></title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="https://dailycssdesign.com/dist/styles.min.css">
+<link rel="stylesheet" href="../stylesheet.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
+
 <body>
-<p>
+<header class="sticky containerRow">
     <?php
 
-    echo "<header><h1><a href='http://localhost/Annonces/index.php'>Site d'Annonces</a></h1></header>";
+    echo "<h1><a href='http://localhost/Annonces/index.php' class='titre'>Site d'Annonces</a></h1>";
     if( isset($login) && $login != ' ') {
-        echo '<p>Connecté en tant que '.$login.'</p> ' ;
-        echo '<a href="/Annonces/index.php/favoris">Favoris</a> ';
-        echo '<a href="/Annonces/index.php/logout">Déconnexion</a> ';
+        echo '<div class="containerColumn inHeader"><p>Connecté en tant que '.$login.'</p> ' ;
+        echo '<div>' ;
+        echo '<button><a href="/Annonces/index.php/favoris">Favoris</a></button> ';
+        echo '<button><a href="/Annonces/index.php/logout">Déconnexion</a></button> ';
     }
     if($login == "aphaz"){
-        echo '<a href="/Annonces/index.php/admin">Administration</a>';
+        echo '<button><a href="/Annonces/index.php/admin">Administration</a></button>';
     }
+    echo '</div></div>' ;
 
     switch( $error ) {
             case 'not connected':
-                echo "<p>Vous n'êtes pas connecté.</p>";
+                echo "<p class='inHeader'>Vous n'êtes pas connecté. Veuillez vous connecter ou vous créer un compte.</p>";
                 break;
             case 'bad login/pwd':
-                echo "<p>Erreur d'authentification. Veuillez vous connecter ou vous créer un compte.</p>";
-                break;
-            case 'noresult':
-                echo '<p>Aucun Résultat</p>';
+                echo "<p class='inHeader'''>Erreur d'authentification. Veuillez vous connecter ou vous créer un compte.</p>";
                 break;
         }
     ?>
-</p>
+</header>
 <?php echo $content; ?>
 
 </body>

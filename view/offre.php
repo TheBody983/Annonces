@@ -1,12 +1,14 @@
 <?php $title = $offre['titre']; ?>
 <?php ob_start(); ?>
-    <h1><?php echo $offre['titre']; ?></h1>
-    <?php if(!est_signalee($offre["code"],$login)){ ?>
-    <a href="offre?id=<?php echo $offre["code"]."&fav"?>"><button>ajouter aux Favoris</button></a>
-    <?php }
-    else{ ?>
-    <a href="offre?id=<?php echo $offre["code"]."&unfav"?>"><button>retirer des Favoris</button></a>
-    <?php }?>
+
+<h2><?php echo $offre['titre']; ?></h2>
+
+<?php if(!est_signalee($offre["code"],$login)){ ?>
+<a href="offre?id=<?php echo $offre["code"]."&fav"?>"><button>Ajouter aux Favoris</button></a>
+<?php }
+else{ ?>
+<a href="offre?id=<?php echo $offre["code"]."&unfav"?>"><button>Retirer des Favoris</button></a>
+<?php }?>
 
 <?php
 echo "<p>Code Annonce : ".$offre["code"]."</p>";

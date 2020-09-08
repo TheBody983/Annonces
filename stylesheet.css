@@ -1,0 +1,102 @@
+body {
+    background-color: #fff;
+    margin:0;
+    height:100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-family: Charcoal, sans-serif;
+}
+
+html{
+    height:100%;
+}
+
+h1 {
+    font-family: Impact, Charcoal, sans-serif;
+    }
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.inHeader{
+    color: whitesmoke;
+}
+
+.containerRow {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+}
+
+.containerColumn {
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+}
+
+.post {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.containerList {
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: start;
+    align-content: flex-start;
+}
+
+header.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: midnightblue;
+
+    margin: auto;
+    width: 100%;
+}
+
+.input {
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 50%;
+}
+
+.loginInput {
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 25%;
+}
+
+textarea {
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 50%;
+}
+
+.titre {
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px black;
+}

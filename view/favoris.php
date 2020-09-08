@@ -5,10 +5,11 @@ include "dataAPI.php";
 
 <?php $title= 'Favoris'; ?>
 
-<?php ob_start();
-if(isset($posts)){?>
+<?php ob_start();?>
+<div class="containerColumn">
     <h2>Liste des Posts</h2>
-    <ul>
+<?php if($posts){?>
+    <ul class="containerColumn">
         <?php foreach( $posts as $post ) : ?>
             <li>
 
@@ -18,13 +19,18 @@ if(isset($posts)){?>
             </li>
         <?php endforeach ?>
     </ul>
-    <?php
-}?>
+<?php }
+else
+{
+    $error = "offres.noresult";
+    echo "<li> Aucun Résultat</li>";
+}
+?>
     <h2>Liste des Annonces</h2>
 <?php
 if($offres){
 ?>
-    <ul>
+    <ul class="containerColumn">
         <?php foreach( $offres as $offre ) :
             $offre = get_offre($offre['postID']);?>
             <li>
@@ -38,8 +44,9 @@ if($offres){
 else
     {
     $error = "offres.noresult";
-    echo "<p> Aucun Résultat</p>";
+    echo "<li> Aucun Résultat</li>";
     }
 ?>
+</div>
 <?php $content = ob_get_clean(); ?>
 <?php include 'layout.php'; ?>
