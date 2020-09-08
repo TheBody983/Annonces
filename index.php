@@ -9,13 +9,13 @@ require_once 'controllers.php';
 session_start();
 
 //RECUPERE L'URL ET LE COUPE EN MORCEAUX AU NIVEAU DE '/'
-$uri = explode('/',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+$action = explode('/',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 //PREND LE DERNIER MORCEAU DE $URI SOIT LE PARAMETRE
-$uri = end($uri);
+$action = end($action);
 //echo $uri;
 
 //Enregistrement avant la vérification d'authentification
-if('register' == $uri){
+if('register' == $action){
     $login = ' ';
     $error = ' ';
     register_action($login, $error);
@@ -36,11 +36,11 @@ if(isset($_POST['mail'])){
 if(!isset($_SESSION['login']) ) {
     if( !isset($_POST['login']) || !isset($_POST['password']) ) {
         $error='not connected';
-        $uri = 'login';
+        $action = 'login';
     }
     elseif( !is_user($_POST['login'],$_POST['password']) ){
         $error='bad login/pwd';
-        $uri = 'login';
+        $action = 'login';
     }
     else {
         $_SESSION['login'] = $_POST['login'] ;
@@ -59,71 +59,61 @@ if(!isset($error)){
     $error = ' ';
 }
 
-//Connecter si pas de session
-if ($uri == 'login'){
-    //Corriger l'adresse pour éviter les bugs de type "/Annonce/annonces"
-    if(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/Annonces/index.php')
-    {
-        header("refresh:0;url=http://localhost/Annonces/index.php/login");
-    }
-    login_action($login,$error);
-}
+switch ( $action ) {
+    case 'index.php':               //Rediriger vers annonces si index.php et Session
+        homepage();
+        break;
 
-//Rediriger vers annonces si index.php et Session
-elseif($uri == 'index.php'){
-    homepage();
-}
+    case 'login' :                  //Connecter si pas de session
+        login_action($login, $error);
+        break;
 
-//Afficher les annonces
-else if ( $uri == 'annonces'  || 'newpost' == $uri ){
-    //Creation d'une nouvelle annonce si en provenance de new
-    if(isset($_POST['postTitle']) ){
-        new_post($_POST['postTitle'],$_POST['postContent'], $login);
-    }
-    annonces_action($login,$error);
-}
+    case 'annonces' :               //Afficher les annonces
+        annonces_action($login, $error);
+        break;
 
-//Consulter un post dont l'id est placé en get
-elseif ('post' == $uri && isset($_GET['id'])) {
-    post_action($_GET['id'],$login,$error);
-}
+    case 'newpost' :                //Afficher les annonces
+        new_post($_POST['postTitle'], $_POST['postContent'], $login);
+        break;
 
-//Consulter une offre dont l'id est placé en get
-elseif ('offre' == $uri && isset($_GET['id'])) {
-    offre_action($_GET['id'],$login,$error);
-}
+    case 'post' :                   //Consulter un post dont l'id est placé en get
+        if(isset($_GET['id'])) {
+            post_action($_GET['id'], $login, $error);
+        }
+        else $error = 'noresult';
+        break;
 
-//Se déconnecter
-elseif('logout' == $uri ) {
-    // fermeture de la session
-    logout();
-}
+    case 'offre' :                  //Consulter une offre dont l'id est placé en get
+        if(isset($_GET['id'])) {
+            offre_action($_GET['id'], $login, $error);
+        }
+        else $error = 'noresult';
+        break;
 
-//Créer une nouvelle annonce
-elseif ('new' == $uri){
-    new_action($login, $error);
-}
+    case 'logout' :                //Se déconnecter
+        logout();
+        break;
 
-//Accèder aux offres signalées
-elseif ('favoris' == $uri){
-    favoris_action($login, $error);
-}
+    case 'new' :                    //Créer une nouvelle annonce
+        new_action($login, $error);
+        break;
 
-//Administration des posts et utilisateurs
-elseif ('admin' == $uri && $login == "aphaz"){
-    if(isset($_GET['deleteUser'])){
-        delete_user($_GET['deleteUser']);
-    }
-    if(isset($_GET['deletePost'])){
-        delete_post($_GET['deletePost']);
-    }
-    admin_action($login, $error);
-}
+    case 'favoris' :               //Accèder aux offres signalées
+        favoris_action($login, $error);
+        break;
+    case 'admin':                   //Administration des posts et utilisateurs
+        if (isset($_GET['deleteUser'])) {
+            delete_user($_GET['deleteUser']);
+        }
+        if (isset($_GET['deletePost'])) {
+           delete_post($_GET['deletePost']);
+        }
+        admin_action($login, $error);
+        break;
 
-//Si rien n'est trouvé
-else {
-header('Status: 404 Not Found');
-echo '<html><body><h1>My Page Not Found</h1></body></html>';
-}
+    default :
+        header('Status: 404 Not Found');
+        echo '<html><body><h1>My Page Not Found</h1></body></html>';
 
+}
 ?>
