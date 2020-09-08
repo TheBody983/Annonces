@@ -110,9 +110,21 @@ textarea {
     width: 50%;
 }
 
-.titre {
-    color: whitesmoke;
+.titre{
+    color: white;
     text-shadow: 2px 2px 2px black;
+}
+
+.titre1{
+    color: white;
+    /*text-shadow: 2px 2px 2px black;*/
+}
+
+.titre2{
+    color: black;
+    background-color: orange;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 /* Pagination links */

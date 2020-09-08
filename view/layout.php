@@ -12,7 +12,10 @@
 <header class="sticky containerRow">
     <?php
 
-    echo "<h1><a href='http://localhost/Annonces/index.php' class='titre'>Site d'Annonces</a></h1>";
+    if(isset($_SESSION['userID'])) {
+        if ($_SESSION['userID'] == 1) echo "<h1 class='containerRow'><a href='http://localhost/Annonces/index.php' class='titre1'>Annonces <item class='titre2'>hub </item></a></h1>";
+    }
+    else echo "<h1 class='containerRow'><a href='http://localhost/Annonces/index.php' class='titre'>Site d'Annonces</a></h1>";
     if( isset($login) && $login != ' ') {
         echo '<div class="headerColumn inHeader"><p>Connecté en tant que '.$login.'</p> ' ;
         echo '<div>' ;
