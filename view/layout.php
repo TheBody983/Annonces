@@ -14,7 +14,7 @@
 
     echo "<h1><a href='http://localhost/Annonces/index.php' class='titre'>Site d'Annonces</a></h1>";
     if( isset($login) && $login != ' ') {
-        echo '<div class="containerColumn inHeader"><p>Connecté en tant que '.$login.'</p> ' ;
+        echo '<div class="headerColumn inHeader"><p>Connecté en tant que '.$login.'</p> ' ;
         echo '<div>' ;
         echo '<button><a href="/Annonces/index.php/favoris">Favoris</a></button> ';
         echo '<button><a href="/Annonces/index.php/logout">Déconnexion</a></button> ';
