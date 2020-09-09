@@ -107,7 +107,6 @@ function new_post($title, $content, $userID){
     $res = mysqli_query($link, $query );
     $id = mysqli_fetch_assoc($res)['ID']+1;
 
-
     $query= 'INSERT INTO posts VALUES ("'.$id.'", "'.$title.'", "'.$userID.'", '.$content.')' ;
     mysqli_query($link, $query );
     close_database_connection($link);
