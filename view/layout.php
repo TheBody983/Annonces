@@ -18,8 +18,9 @@
         else echo "<h1 class='containerRow'><a href='http://localhost/Annonces/index.php' class='titre'>Site d'Annonces</a></h1>";
     }
     else echo "<h1 class='containerRow'><a href='http://localhost/Annonces/index.php' class='titre'>Site d'Annonces</a></h1>";
+
     if( isset($login) && $login != ' ') {
-        echo '<div class="headerColumn inHeader"><p>Connecté en tant que '.$login.'</p> ' ;
+        echo '<div class="header Column inHeader"><p>Connecté en tant que '.$login.'</p> ' ;
         echo '<div>' ;
         echo '<button><a href="/Annonces/index.php/favoris">Favoris</a></button> ';
         echo '<button><a href="/Annonces/index.php/logout">Déconnexion</a></button> ';

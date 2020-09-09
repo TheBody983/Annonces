@@ -2,6 +2,9 @@
 Devoir de Développement Web
 Code Source disponible sur :
 	https://github.com/TheBody983/Annonces
+	
+Rapport de Projet :
+	https://docs.google.com/document/d/1ICo0WJu3T_zAq1YW8eZRIoT-56ZzlkS8OxLQuemYcNE/edit?usp=sharing
 
 Commits au fils du cours et des améliorations.
 
