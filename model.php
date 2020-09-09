@@ -97,10 +97,10 @@ function get_all_posts()
     }
     mysqli_free_result( $resultall);
     close_database_connection($link);
-    return $posts;
+    return array_reverse($posts);
 }
 
-function new_post($title, $content, $login){
+function new_post($title, $content, $userID){
     $link = open_database_connection();
 
     $query= 'SELECT MAX(postID) AS ID FROM posts' ;
@@ -108,7 +108,7 @@ function new_post($title, $content, $login){
     $id = mysqli_fetch_assoc($res)['ID']+1;
 
 
-    $query= 'INSERT INTO `posts`(`postID`, `postTitle`, `postContent`, login) VALUES ("'.$id.'", "'.$title.'", "'.$content.'", "'.$login.'")' ;
+    $query= 'INSERT INTO posts VALUES ("'.$id.'", "'.$title.'", "'.$userID.'", '.$content.')' ;
     mysqli_query($link, $query );
     close_database_connection($link);
 }

@@ -77,11 +77,8 @@ switch ( $action ) {
         break;
 
     case 'annonces' :               //Afficher les annonces
+        if(isset($_POST['postTitle'])) new_post($_POST['postTitle'], $_POST['postContent'], $_SESSION['userID']);
         annonces_action($login, $error);
-        break;
-
-    case 'newpost' :                //Afficher les annonces
-        new_post($_POST['postTitle'], $_POST['postContent'], $login);
         break;
 
     case 'post' :                   //Consulter un post dont l'id est placé en get
