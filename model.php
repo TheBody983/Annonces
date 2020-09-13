@@ -68,7 +68,38 @@ close_database_connection($link);
 return $isuser;
 }
 
+function hashed_is_user( $login, $password )
+{
+$isuser = False ;
+$link = open_database_connection();
+
+
+$query= 'SELECT login, userID, password FROM Users WHERE login="'.$login.'"';
+$result = mysqli_query($link, $query );
+if($result){
+    $login = mysqli_fetch_assoc($result);
+    mysqli_free_result( $result);
+    if( password_verify( $password, $login['password']) ){
+        $isuser = True;
+    }
+}
+
+close_database_connection($link);
+return $isuser;
+}
+
 function new_user($login,$pwd,$surname,$name,$mail,$country,$city){
+    $link = open_database_connection();
+    $query= 'SELECT MAX(userID) AS ID FROM users' ;
+    $res = mysqli_query($link, $query );
+    $id = mysqli_fetch_assoc($res)['ID']+1;
+    $hash= password_hash($pwd, PASSWORD_DEFAULT);
+
+    $query= 'INSERT INTO users VALUES ("'.$id.'", "'.$login.'", "'.$hash.'", "'.$surname.'", "'.$name.'", "'.$mail.'", "'.$country.'", "'.$city.'")' ;
+    mysqli_query($link, $query );
+    close_database_connection($link);
+}
+function hashed_new_user($login,$pwd,$surname,$name,$mail,$country,$city){
     $link = open_database_connection();
     $query= 'SELECT MAX(userID) AS ID FROM users' ;
     $res = mysqli_query($link, $query );
@@ -119,15 +150,19 @@ function prepared_new_post($title, $content, $userID){
     $res = mysqli_query($link, $query );
     $id = mysqli_fetch_assoc($res)['ID']+1;
 
-    $title =   str_replace(array('\n','\r',PHP_EOL),' ',htmlspecialchars($title));
-    $content =   str_replace(array('\n','\r',PHP_EOL),' ',htmlspecialchars(content));
-    $userID =  intval($userID);
+    $title = htmlspecialchars($title);
+    $title =  str_replace(array('\n','\r',PHP_EOL),' ',$title);
 
-    $stmt = mysqli_prepare($link,'INSERT INTO posts VALUES (?, ?, ?, ?)');
-    mysqli_stmt_bind_param($query, 's', $id, $title, $userID, $content);
+    $content = htmlspecialchars($content);
+    $content = str_replace(array('\n','\r',PHP_EOL),' ',$content);
 
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt);
+    //$userID =  intval($userID);
+    $query = mysqli_prepare($link,'INSERT INTO posts VALUES ('.$id.', ?,'.$userID.', ?)');
+    mysqli_stmt_bind_param($query, 'ss', $title , $content);
+
+
+    mysqli_stmt_execute($query);
+    //mysqli_stmt_bind_result($query, $var, $var2);
 
     close_database_connection($link);
 }

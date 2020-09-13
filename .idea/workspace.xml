@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3be2b944-e00b-47a7-b900-c7fec6801eaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +63,12 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Annonces\view" />
-      <recent name="C:\xampp\htdocs" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Annonces" />
+      <recent name="C:\xampp\htdocs" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Annonces\view" />
       <recent name="C:\xampp\htdocs" />
     </key>
   </component>
@@ -107,6 +107,7 @@
       <workItem from="1599653627495" duration="803000" />
       <workItem from="1599683212995" duration="1403000" />
       <workItem from="1599977224685" duration="1947000" />
+      <workItem from="1599979286618" duration="3247000" />
     </task>
     <servers />
   </component>

@@ -14,6 +14,12 @@ $action = explode('/',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $action = end($action);
 //echo $uri;
 
+//RECUPERE LA SOURCE
+if(isset($_SERVER['HTTP_REFERER'])){
+    $source  = explode('/',parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH));
+    $source = end($source);
+}
+
 //Enregistrement avant la vérification d'authentification
 if('register' == $action){
     $login = ' ';
@@ -23,12 +29,13 @@ if('register' == $action){
 }
 
 //Création d'un nouvel utilisateur si vient de register
-if(isset($_POST['mail'])){
-    if(isset($_POST['city'])) {
-        new_user($_POST['login'], $_POST['password'], $_POST['surname'], $_POST['name'], $_POST['mail'], $_POST['country'], $_POST['city']);
-    }
-    else{
-        new_user($_POST['login'], $_POST['password'], $_POST['surname'], $_POST['name'], $_POST['mail'], ' ', ' ');
+if(isset($source)) {
+    if ($source == "register") {
+        if (isset($_POST['city'])) {
+            new_user($_POST['login'], $_POST['password'], $_POST['surname'], $_POST['name'], $_POST['mail'], $_POST['country'], $_POST['city']);
+        } else {
+            new_user($_POST['login'], $_POST['password'], $_POST['surname'], $_POST['name'], $_POST['mail'], ' ', ' ');
+        }
     }
 }
 
@@ -38,7 +45,7 @@ if(!isset($_SESSION['login']) ) {
         $error='not connected';
         $action = 'login';
     }
-    elseif( !is_user($_POST['login'],$_POST['password']) ){
+    elseif( !hashed_is_user($_POST['login'],$_POST['password']) ){
         $error='bad login/pwd';
         $action = 'login';
     }
@@ -77,7 +84,7 @@ switch ( $action ) {
         break;
 
     case 'annonces' :               //Afficher les annonces
-        if(isset($_POST['postTitle'])) new_post($_POST['postTitle'], $_POST['postContent'], $_SESSION['userID']);
+        if(isset($_POST['postTitle'])) prepared_new_post($_POST['postTitle'], $_POST['postContent'], $_SESSION['userID']);
         annonces_action($login, $error);
         break;
 
