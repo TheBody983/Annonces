@@ -2,7 +2,7 @@
 //DATABASE CONNECTION
 function open_database_connection()
 {
-    $link = mysqli_connect('localhost', 'root', '', 'annonces');
+    $link = mysqli_connect('localhost', 'model', 'Damien', 'annonces');
     return $link;
 }
 
@@ -109,6 +109,26 @@ function new_post($title, $content, $userID){
 
     $query= 'INSERT INTO posts VALUES ("'.$id.'", "'.$title.'", "'.$userID.'", '.$content.')' ;
     mysqli_query($link, $query );
+    close_database_connection($link);
+}
+
+function prepared_new_post($title, $content, $userID){
+    $link = open_database_connection();
+
+    $query= 'SELECT MAX(postID) AS ID FROM posts' ;
+    $res = mysqli_query($link, $query );
+    $id = mysqli_fetch_assoc($res)['ID']+1;
+
+    $title =   str_replace(array('\n','\r',PHP_EOL),' ',htmlspecialchars($title));
+    $content =   str_replace(array('\n','\r',PHP_EOL),' ',htmlspecialchars(content));
+    $userID =  intval($userID);
+
+    $stmt = mysqli_prepare($link,'INSERT INTO posts VALUES (?, ?, ?, ?)');
+    mysqli_stmt_bind_param($query, 's', $id, $title, $userID, $content);
+
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt);
+
     close_database_connection($link);
 }
 
